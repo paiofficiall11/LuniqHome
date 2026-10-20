@@ -9,6 +9,7 @@ export default function useLuniqSite(refs) {
     const H = d.documentElement
     const rm = matchMedia('(prefers-reduced-motion:reduce)').matches
     const dpr = Math.min(devicePixelRatio || 1, 2)
+    const LOAD_MS = 1200
     const R = refs
     let lenis = null
     let go = false
@@ -61,7 +62,7 @@ export default function useLuniqSite(refs) {
     addEventListener('resize', ft)
     ft()
     if (d.fonts && d.fonts.ready) d.fonts.ready.then(() => { fr = true; ft() })
-    setTimeout(() => { fr = true }, 4000)
+    setTimeout(() => { fr = true }, 1500)
 
     /* ---------- loader ---------- */
     function finish() {
@@ -90,12 +91,12 @@ export default function useLuniqSite(refs) {
       const st = (ts) => {
         t0 = t0 || ts
         const el = ts - t0
-        let p = cl(el / 2200, 0, 1)
+        let p = cl(el / LOAD_MS, 0, 1)
         p = 1 - Math.pow(1 - p, 3)
         if (!fr) p = Math.min(p, 0.9)
         R.lc.current.textContent = Math.round(p * 100)
         R.fm.current.style.setProperty('--p', p)
-        if (el >= 2200 && fr && p >= 1) { finish(); return }
+        if (el >= LOAD_MS && fr && p >= 1) { finish(); return }
         requestAnimationFrame(st)
       }
       requestAnimationFrame(st)
