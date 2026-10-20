@@ -14,7 +14,7 @@ export default function Vision({ mfRef, secRef }) {
         <span className="lb rv">Vision</span>
         <p className="mf" id="mf" ref={mfRef}>
           {words.map((w, i) => (
-            <span key={i} className="w">{w}</span>
+            <span key={i} className="w">{w} </span>
           ))}
         </p>
         <div className="mt rv">
