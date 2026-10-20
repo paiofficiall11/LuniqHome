@@ -21,7 +21,7 @@ export default function Nav({ site, nvRef, mbRef, mlRef, ovRef }) {
     <>
       <nav id="nv" ref={nvRef}>
         <a className="logo" href="#top" aria-label="Luniq home" onClick={go('#top')}>
-          <span className="mk"></span>Luniq
+          <span className="mk"></span>
         </a>
         <div className="nr">
           {LINKS.map(([href, label]) => (
